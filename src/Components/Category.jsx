@@ -86,6 +86,7 @@ function Category() {
         <button className="btn btn-info" onClick={handleShow}>
           Add New Category
         </button>
+        <p className='pt-2 text-danger font-italic'>*<small>Drag & Drop notes into categories</small></p>
       </div>
 
       {displayCategoryName.length > 0 ? (
