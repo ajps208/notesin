@@ -1,23 +1,27 @@
-import logo from './logo.svg';
+import { Route, Routes } from 'react-router-dom';
 import './App.css';
+import Footer from './Components/Footer';
+import Navbar from './Components/Navbar';
+import LandingPage from './Pages/LandingPage'
+import DisplayPage from './Pages/DisplayPage'
+import AddPage from './Pages/AddPage'
+import CategoryPage from './Pages/CategoryPage'
+import { useSelector} from "react-redux";
+
 
 function App() {
+  const mode=useSelector((state)=>state.darkmode.modestatus)
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={mode?`appbg`:`lightbg`}>
+     <Navbar/>
+     <Routes>
+      <Route path={'/'} element={<LandingPage/>} />
+      <Route path={'/home'} element={<DisplayPage/>} />
+      <Route path={'/add'} element={<AddPage/>} />
+      <Route path="/category/:categoryId" element={<CategoryPage/>} />
+     </Routes>
+     <Footer/>
     </div>
   );
 }
