@@ -1,5 +1,5 @@
 .contact-form{
-    background: #fff;
+   
  
     width: 70%;
 }
@@ -46,4 +46,9 @@
     background-color: #0062cc;
     border: none;
     cursor: pointer;
+}
+@media screen and (max-width: 480px) {
+    .form-group{
+        margin-top: 20px;
+    }
 }

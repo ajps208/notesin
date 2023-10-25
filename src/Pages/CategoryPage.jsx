@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getACategories, getANotes, updateCategory } from '../Services/allAPI';
 import { Modal } from 'react-bootstrap';
-import sticky from '../Images/stickyimage.png';
+import sticky from '../Images/note.png';
 
 function CategoryPage() {
   const [show, setShow] = useState(false);
@@ -52,12 +52,12 @@ function CategoryPage() {
     <>
       <h4 className='text-start mx-5 mt-2'>{cat.categoryName}</h4>
 
-      <div className='d-flex flex-wrap flex-row'>
+      <div style={{minHeight:"80vh"}} className='d-flex flex-wrap flex-row'>
         {cat.allNotes ? cat.allNotes.map((item) => (
           <div key={item.id} style={{ width: "280px", position: "relative" }}>
             <img onClick={() => handleShow(item?.id)} style={{ objectFit: "cover" }} className="img-fluid w-100 mt-0 po" src={sticky} alt="" />
-            <h5 className='text-break' style={{ Width: "50px", position: "absolute", top: "50px", left: "80px", height: "300px" }}>{item?.title}</h5>
-            <div style={{ position: "absolute", top: "200px", left: "110px" }} className='d-flex'>
+            <h5 className='text-break' style={{color:"black", Width: "50px", position: "absolute", top: "90px", left: "80px", height: "300px" }}>{item?.title}</h5>
+            <div style={{color:"black", position: "absolute", top: "180px", left: "90px" }} className='d-flex'>
               <h6>{item?.time}</h6>
               <i onClick={() => deleteNote(item?.id)} className="fa-solid fa-trash text-danger mx-2"></i>
             </div>

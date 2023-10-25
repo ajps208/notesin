@@ -1,9 +1,13 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import Logo from "../Images/notesin-low-resolution-logo-color-on-transparent-background.png";
+import Logo1 from "../Images/logo-light.png";
+import { useSelector } from 'react-redux';
 
 
 function Footer() {
+  const mode=useSelector((state)=>state.darkmode.modestatus)
+
   return (
     <>
     <hr />
@@ -15,7 +19,7 @@ function Footer() {
         <div style={{ width: "400px" }} className="website">
           <h4>
            
-        <img width={"165px"} src={Logo} className="img-fluid" alt="" />
+        <img width={"165px"}  src={!mode?Logo:Logo1} className="img-fluid" alt="" />
           </h4>
           <h6>
           Designed with passion and precision by Ajith PS.

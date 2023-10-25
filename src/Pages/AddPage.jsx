@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import './AddPage.css';
 import { uploadNote } from '../Services/allAPI';
 import { useNavigate } from 'react-router-dom';
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function AddPage() {
   const navigateByUrl = useNavigate();
@@ -22,7 +23,7 @@ function AddPage() {
     const { title, note } = notes;
 
     if (!title || !note) {
-      alert("Please fill in all fields");
+      toast.warning("Please fill in all fields");
    
     }else{
 
@@ -39,16 +40,16 @@ function AddPage() {
     if (response.status >= 200 && response.status < 300) {
       // Clear the form fields by setting notes state to an empty object
 
-      alert(`${response.data.title} notes upload was successful`);
+      toast.success(`${response.data.title} notes upload was successful`);
       setNotes({title:"",note:"",time:""})
       navigate()
 
     } else {
-      alert("Upload error... Please try again later!!!");
+      toast.error("Upload error... Please try again later!!!");
     }}
   }
   return (
-    <div className="container contact-form">
+    <div  style={{minHeight:"100vh"}} className="container contact-form">
       <div className="contact-image mt-3">
         <i className="fa-regular fa-pen-to-square fa-5x"></i>
       </div>
@@ -98,7 +99,10 @@ function AddPage() {
           </div>
         </div>
       </form>
+      <ToastContainer position="top-center" theme="colored" autoClose={2000} />
+
     </div>
+    
   );
 }
 

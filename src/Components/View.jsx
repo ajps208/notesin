@@ -1,6 +1,6 @@
 import React,{useEffect, useState} from 'react'
 import {  Modal } from 'react-bootstrap'
-import sticky from '../Images/stickyimage.png'
+import sticky from '../Images/note.png';
 import { deleteANote, getANotes, getAllNotes } from '../Services/allAPI';
 
 
@@ -41,8 +41,9 @@ function View() {
  {allNotes.length > 0 ? allNotes.map((noteData) => (
         <div  draggable onDragStart={(e)=>{dragStarted(e,noteData?.id)}} key={noteData.id} style={{ width: "280px", position: "relative" }}>
           <img onClick={()=>handleShow(noteData?.id)} style={{ objectFit: "cover" }} className="img-fluid w-100 mt-0 po" src={sticky} alt="" />
-          <h5 className='text-break' style={{Width:"50px",position: "absolute", top: "50px", left: "80px",height:"300px"  }}>{noteData?.title}</h5>
-          <div style={{ position: "absolute", top: "200px", left: "110px" }} className='d-flex'>
+          <h5 className='text-break' style={{color:"black", Width: "50px", position: "absolute", top: "90px", left: "80px", height: "300px" }}>{noteData?.title}</h5>
+          <div style={{color:"black", position: "absolute", top: "180px", left: "90px" }
+        } className='d-flex'>
             <h6>{noteData?.time}</h6>
            <i onClick={()=>handleDelete(noteData?.id)} className="px-3 mb-2 fa-solid fa-trash text-danger"></i>
           </div>

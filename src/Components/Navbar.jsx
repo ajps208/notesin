@@ -1,9 +1,10 @@
 import React from "react";
 import Logo from "../Images/notesin-low-resolution-logo-color-on-transparent-background.png";
+import Logo1 from "../Images/logo-light.png";
 import { Link } from "react-router-dom";
 import { useSelector,useDispatch} from "react-redux";
 import { darkmode } from "../Redux/darkmodeSlice";
-
+import './Navbar.css'
 function Navbar() {
   const dispatch = useDispatch();
 
@@ -12,10 +13,10 @@ function Navbar() {
 
   return (
     <div>
-      <nav className="navbar navbar-expand-lg bg-body-tertiary">
+      <nav className="navbar navbar-expand-lg ">
         <div className="container-fluid">
           <Link className="navbar-brand ms-5" to={"/"}>
-            <img width={"185px"} src={Logo} className="img-fluid" alt="" />
+            <img width={"185px"} src={!mode?Logo:Logo1} className="img-fluid" alt="" />
           </Link>
           <button
             className="navbar-toggler"
@@ -36,7 +37,7 @@ function Navbar() {
                   className="d-flex align-items-center"
                   style={{
                     textDecoration: "none",
-                    color: "black",
+                    color:!mode ? "black" : "white",
                     fontWeight: "bold",
                   }}
                 >
@@ -52,7 +53,7 @@ function Navbar() {
                   className="d-flex align-items-center"
                   style={{
                     textDecoration: "none",
-                    color: "black",
+                    color: !mode ? "black" : "white",
                     fontWeight: "bold",
                   }}
                 >
@@ -64,7 +65,7 @@ function Navbar() {
                 </Link>
               </li>
             </ul>
-            <i onClick={()=>dispatch(darkmode())} className= 'fa-solid fa-moon text-dark'></i>
+            <i id="icon" onClick={()=>dispatch(darkmode())} className= {mode?'fa-solid fa-sun text-light me-2' : 'fa-solid fa-moon text-dark me-2'}></i>
 
           </div>
         </div>

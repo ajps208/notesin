@@ -4,6 +4,8 @@ import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 import { useNavigate } from 'react-router-dom';
 import { addCategory, deleteCategory, getANotes, getAllCategories, updateCategory } from '../Services/allAPI';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function Category() {
   const navigateByUrl = useNavigate();
@@ -32,10 +34,10 @@ function Category() {
         setCategoryName('');
         displayCategory();
       } else {
-        alert('Uploading error!!!!');
+        toast.error('Uploading error!!!!');
       }
     } else {
-      alert('Please provide a category name!!!!');
+      toast.warning('Please provide a category name!!!!');
     }
   };
 
@@ -145,6 +147,8 @@ function Category() {
           </Button>
         </Modal.Footer>
       </Modal>
+      <ToastContainer position="top-center" theme="colored" autoClose={2000} />
+
     </>
   );
 }

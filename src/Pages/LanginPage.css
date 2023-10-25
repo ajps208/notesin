@@ -4,4 +4,9 @@
     color: #faf5f5; /* Change the text color when hovered, if needed */
 
   }
+  @media screen and (max-width: 480px) {
+   #first{
+    padding: 0px 20px;
+   }
+  }
   

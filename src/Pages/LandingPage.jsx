@@ -3,8 +3,11 @@ import { Row, Col, Card } from "react-bootstrap";
 import { Parallax } from "react-parallax";
 import {useNavigate} from 'react-router-dom'
 import './LanginPage.css'
+import { useSelector } from "react-redux";
 
 function LandingPage() {
+  const mode=useSelector((state)=>state.darkmode.modestatus)
+
   const navigateByUrl=useNavigate()
   const navigate=()=>{
     navigateByUrl('/add')
@@ -13,7 +16,7 @@ function LandingPage() {
     navigateByUrl('/home')
   }
   return (
-    <div style={{ overflowX: "hidden" }}>
+    <div style={{ overflowX: "hidden",minHeight:"120vh"}}>
       <Parallax
         style={{ height: "65vh" }}
         bgImage="https://images.pexels.com/photos/317356/pexels-photo-317356.jpeg?cs=srgb&dl=pexels-lukas-317356.jpg&fm=jpg" // Replace with your background image URL
@@ -21,8 +24,8 @@ function LandingPage() {
       >
         <Row className="mt-5 mb-5 align-items-center justify-content-between">
           <Col></Col>
-          <Col lg={8}>
-            <h2 className="mb-3" style={{ textShadow: "2px 2px 2px #FFFFFF" }}>
+          <Col id="first" lg={8}>
+            <h2 className="mb-3" style={{ color:"black",textShadow: "2px 2px 2px #FFFFFF" }}>
               Welcome to {" "}
               <span
                 style={{ textShadow: "2px 2px 2px #000" }}
@@ -69,7 +72,7 @@ function LandingPage() {
       <div className="container-fluid cards d-flex w-100 mt-5 flex-wrap align-items-center justify-content-evenly">
         <Card
           className="p-3 d-flex flex-row"
-          style={{ width: "22rem", border: "none" }}
+          style={{ width: "22rem", border: "none",backgroundColor:!mode}}
         >
           <i class="fa-regular fa-pen-to-square fa-beat-fade fa-3x"></i>{" "}
           <Card.Body>
